@@ -8,7 +8,7 @@ seeds=[int(x) for x in sections[0].split(" ")[1:]]
 steps=[[[int(y) for y in x.split(" ")]  for x in sections[n].split("\n")[1:]] for n in range(1,len(sections))]
 #for step in steps:
 #    print(step)
-finalseeds=[]
+locations=[]
 for seed in seeds:
     for step in steps:
         for (dest,src,len) in step:
@@ -16,5 +16,5 @@ for seed in seeds:
                 #print("seed",seed,"dest",dest,"src",src,"len",len, "diff",dest-src)
                 seed+=(dest-src)
                 break
-    finalseeds.append(seed)
-print(min(finalseeds))
+    locations.append(seed)
+print(min(locations))
