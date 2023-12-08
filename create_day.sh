@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Create a new day in the current year
 # Usage: create_day.sh <day>
 # Example: create_day.sh 1
