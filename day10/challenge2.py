@@ -127,5 +127,5 @@ for y,l in enumerate(copy_of_map):
             pass
 
 # print the map and color the enclosed area (just for fun, not necessary)
-print("\n".join(["".join([str(ch) if ch!="1" else "\033[91m1\033[0m" for ch in l]) for l in copy_of_map]))
+print("\n".join(["".join([str(ch).replace("F","┌").replace("L","└").replace("7","┐").replace("J","┘").replace("-","─").replace("|","│") if ch!="1" else "\033[91m1\033[0m" for ch in l]) for l in copy_of_map]))
 print(counter)
