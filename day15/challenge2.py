@@ -11,20 +11,10 @@ def hashval(text):
 
 boxes=[{} for i in range(256)]
 for t in challtext:
-    if t.endswith("-"):
-        box=hashval(t[:-1])
-        if t[:-1] in boxes[box]:
-            boxes[box].pop(t[:-1])
+    if t.endswith("-") and t[:-1] in boxes[hashval(t[:-1])]:
+        boxes[hashval(t[:-1])].pop(t[:-1])
     if "=" in t:
         tbox, val=t.split("=")
-        box=hashval(tbox)
-        if tbox in boxes[box]:
-            boxes[box][tbox]=val
-        else:
-            boxes[box][tbox]=val
-total=0
-for i,box in enumerate(boxes):
-    for j,(_,val) in enumerate(box.items()):
-        total+=(i+1)*(j+1)*int(val)
+        boxes[hashval(tbox)][tbox]=val
 
-print(total)
+print(sum((i+1) * (j+1) * int(val) for i, box in enumerate(boxes) for j, (_, val) in enumerate(box.items())))
