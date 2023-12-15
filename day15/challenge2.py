@@ -11,8 +11,8 @@ def hashval(text):
 
 boxes=[{} for i in range(256)]
 for t in challtext:
-    if t.endswith("-") and t[:-1] in boxes[hashval(t[:-1])]:
-        boxes[hashval(t[:-1])].pop(t[:-1])
+    if t.endswith("-"):
+        boxes[hashval(t[:-1])].pop(t[:-1],None)
     if "=" in t:
         tbox, val=t.split("=")
         boxes[hashval(tbox)][tbox]=val
